@@ -99,10 +99,11 @@ async function fillTempDir(dir, file) {
     }
 }
 
+fillTempDir(dir, file);
+
 /* --------------------------------------------------------------------- */
 /* Watcher du dossiers */
 
-fillTempDir(dir, file);
 function watcher(){
     fs.watchFile(`${dir}${file}`, (curr, prev) => {
         console.log(`Fichier modifié ${compteur++} fois`);
