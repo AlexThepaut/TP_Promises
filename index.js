@@ -99,6 +99,9 @@ async function fillTempDir(dir, file) {
     }
 }
 
+/* --------------------------------------------------------------------- */
+/* Watcher du dossiers */
+
 fillTempDir(dir, file);
 function watcher(){
     fs.watchFile(`${dir}${file}`, (curr, prev) => {
