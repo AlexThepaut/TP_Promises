@@ -80,7 +80,7 @@ let compteur = 0;
         console.error(err);
     });
 */
-
+ 
 /* --------------------------------------------------------------------- */
 /* Async with await */
 
@@ -106,6 +106,6 @@ fillTempDir(dir, file);
 
 function watcher(){
     fs.watchFile(`${dir}${file}`, (curr, prev) => {
-        console.log(`Fichier modifié ${compteur++} fois`);
+        console.log(`Fichier modifié ${++compteur} fois`);
     });
 }
