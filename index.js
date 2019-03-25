@@ -54,11 +54,11 @@ const pubJson = [
         ]
     }
 ]
-let compteur = 0;
+
 
 /* --------------------------------------------------------------------- */
-/* Async with promise */
-/*fs.pathExists(dir)
+/* Promise */
+/*fs.pathExists(dir, file)
     .then(exists => {
         if (exists) {
             console.log("Dir Temp exist so remove it");
@@ -74,7 +74,7 @@ let compteur = 0;
     })
     .then(() => {
         console.log("Success !")
-        watcher();
+        watcher(dir, file);
     })
     .catch(err => {
         console.error(err);
@@ -93,7 +93,7 @@ async function fillTempDir(dir, file) {
         }
         await fs.ensureDir(dir);
         await fs.writeJson(`${dir}${file}`, pubJson);
-        watcher();
+        await watcher(dir, file);
     } catch (err) {
         console.error(err);
     }
@@ -104,7 +104,8 @@ fillTempDir(dir, file);
 /* --------------------------------------------------------------------- */
 /* Watcher du dossiers */
 
-function watcher(){
+async function watcher(dir, file){
+    let compteur = 0;
     fs.watchFile(`${dir}${file}`, (curr, prev) => {
         console.log(`Fichier modifié ${++compteur} fois`);
     });
